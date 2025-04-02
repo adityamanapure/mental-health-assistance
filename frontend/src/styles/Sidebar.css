@@ -1,0 +1,263 @@
+.sidebar {
+  width: 260px;
+  height: calc(100vh - 70px);
+  background-color: #ffffff;
+  border-right: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 70px;
+  transition: all 0.3s ease;
+  z-index: 90;
+  overflow-y: auto;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #7f8c8d;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.sidebar-menu li {
+  margin: 0.5rem 0;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #2c3e50;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 0 0.75rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar-menu a:hover {
+  background-color: #f5f9ff;
+  color: #3498db;
+}
+
+.sidebar-menu a.active {
+  background-color: #ebf5ff;
+  color: #3498db;
+  font-weight: 500;
+}
+
+.sidebar-menu a.active::before {
+  content: '';
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 70%;
+  width: 4px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebar-menu i {
+  font-size: 1.2rem;
+  width: 24px;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto;
+}
+
+.help-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.help-card i {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.help-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.help-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.help-card button {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.help-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #3498db;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.sidebar-toggle:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+.sidebar-toggle i {
+  font-size: 1.2rem;
+}
+
+/* Sidebar States */
+.sidebar.visible {
+  left: 0;
+}
+
+.sidebar.collapsed {
+  left: -260px;
+}
+
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 89;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 240px;
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    top: 0;
+    padding-top: 70px;
+  }
+  
+  .sidebar.collapsed {
+    left: -260px;
+  }
+  
+  .sidebar-toggle {
+    display: flex;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: #1a1c23;
+    border-right: 1px solid #2d3748;
+  }
+  
+  .sidebar-header {
+    border-bottom: 1px solid #2d3748;
+  }
+  
+  .sidebar-header h3 {
+    color: #a0aec0;
+  }
+  
+  .sidebar-menu a {
+    color: #e2e8f0;
+  }
+  
+  .sidebar-menu a:hover {
+    background-color: #2d3748;
+    color: #63b3ed;
+  }
+  
+  .sidebar-menu a.active {
+    background-color: #2d3748;
+    color: #63b3ed;
+  }
+  
+  .sidebar-footer {
+    border-top: 1px solid #2d3748;
+  }
+  
+  .help-card {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  }
+  
+  .help-card h4 {
+    color: #e2e8f0;
+  }
+  
+  .help-card p {
+    color: #a0aec0;
+  }
+}

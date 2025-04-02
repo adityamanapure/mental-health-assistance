@@ -3,8 +3,10 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
-    bio = models.TextField(blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-
+    bio = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.username
+
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
